@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binal Morker | Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #0a66c2, #004182);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: white;
+    color: #0a66c2;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* SECTION */
+section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #0a66c2;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* FORM */
+input, textarea {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* SUCCESS MESSAGE */
+#success-msg {
+    display: none;
+    margin-top: 20px;
+    font-size: 16px;
+    color: green;
+    font-weight: bold;
+    background: #e6ffe6;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0a66c2;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Binal Morker</h1>
+    <p>Senior Software Developer | .NET | API | SQL Optimization</p>
+    <a href="#contact" class="btn">Hire Me</a>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        I am a software developer with 7+ years of experience in backend development,
+        bug fixing, and performance optimization. I help businesses solve technical
+        issues and improve system performance.
+    </p>
+</section>
+
+<section>
+    <h2>My Services</h2>
+    <div class="grid">
+        <div class="card">Bug Fixing</div>
+        <div class="card">API Development</div>
+        <div class="card">Database Optimization</div>
+        <div class="card">PHP Customization</div>
+    </div>
+</section>
+
+<section>
+    <h2>Projects</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>Legal Hold System</h3>
+            <p>Automated email reminders and legal hold management system.</p>
+        </div>
+
+        <div class="card">
+            <h3>Database Optimization</h3>
+            <p>Handled 10M+ records and improved query performance.</p>
+        </div>
+
+        <div class="card">
+            <h3>Bug Fixing</h3>
+            <p>Resolved critical production issues and improved stability.</p>
+        </div>
+
+        <div class="card">
+            <h3>osTicket Customization</h3>
+            <p>Customized PHP ticketing system based on requirements.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" style="text-align:center;">
+    <h2>Contact Me</h2>
+    <p>Have a project? Let’s discuss 👇</p>
+
+    <form onsubmit="sendEmail(event)" id="contact-form">
+        
+        <input type="text" name="name" placeholder="Your Name" required><br><br>
+
+        <input type="email" name="email" placeholder="Your Email" required><br><br>
+
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
+
+        <button type="submit" class="btn">Get Free Consultation</button>
+    </form>
+
+    <p id="success-msg">
+        ✅ Message sent successfully! I will contact you soon.
+    </p>
+</section>
+
+<footer>
+    © 2026 Binal Morker
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919724452010" target="_blank"
+style="
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #25D366;
+color: white;
+padding: 15px;
+border-radius: 50%;
+text-decoration: none;
+font-size: 20px;
+">
+💬
+</a>
+
+<!-- EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("BJdZe9L01s0gbKTJM"); // 🔴 replace this
+})();
+
+function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_gm8cble', 'template_o3locvi', e.target)
+    .then(function() {
+
+    // Reset form FIRST
+    document.getElementById("contact-form").reset();
+
+    // Show success message
+    document.getElementById("success-msg").style.display = "block";
+
+    // Hide message after 4 sec
+    setTimeout(() => {
+        document.getElementById("success-msg").style.display = "none";
+    }, 4000);
+
+}, function(error) {
+    alert("Failed to send message. Try again.");
+});
+}
+</script>
+
+</body>
+</html>
